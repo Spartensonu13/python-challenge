@@ -58,11 +58,11 @@ with open(budgetCsvPath) as budgetCsvFile:
 with open(analysisFilePath, 'w') as analysisFile:
     analysisFile.write("Financial Analysis")
     analysisFile.write("\n----------------------------")
-    analysisFile.write("\nTotal Months: " + str(totalMonth))    
-    analysisFile.write("\nTotal: " + str(totalNetProfitLoss))
+    analysisFile.write(f"\nTotal Months: {totalMonth}")    
+    analysisFile.write(f"\nTotal: {totalNetProfitLoss}")
     analysisFile.write(f"\nAverage Change: {netMonthlyAvg:.2f}")
-    analysisFile.write("\nGreatest Increase in Profits: " + greatestIncrease[0] + " $" + str(greatestIncrease[1]))
-    analysisFile.write("\nGreatest Decrease in Profits: " + greatestDecrease[0] + " $" + "({})".format(math.fabs(greatestDecrease[1])) if greatestDecrease[1] < 0 else "{}".format(greatestDecrease[1]))
+    analysisFile.write(f"\nGreatest Increase in Profits: {greatestIncrease[0]} (${greatestIncrease[1]})")
+    analysisFile.write(f"\nGreatest Decrease in Profits: {greatestDecrease[0]} (${greatestDecrease[1]})")
     analysisFile.close
 
 with open(analysisFilePath, 'r') as analysisFileReader:
