@@ -25,6 +25,11 @@ with open(budgetCsvPath) as budgetCsvFile:
     
     # skip header row
     next(budgetCsvReader)
+    firstRow = next(budgetCsvReader)
+    totalMonth += 1
+    totalNetProfitLoss += int(firstRow[1])
+    previousMonthProfitLoss = int(firstRow[1])
+
 
     # loop through easc row in csv file
     for row in budgetCsvReader:
@@ -50,7 +55,6 @@ with open(budgetCsvPath) as budgetCsvFile:
         if netChange < greatestDecrease[1]:
             greatestDecrease[0] = row[0]
             greatestDecrease[1] = netChange
-
 
     # calculate net monthly avg 
     netMonthlyAvg = sum(changeNetProfitLoss)/len(changeNetProfitLoss)
