@@ -59,16 +59,20 @@ with open(budgetCsvPath) as budgetCsvFile:
     # calculate net monthly avg 
     netMonthlyAvg = sum(changeNetProfitLoss)/len(changeNetProfitLoss)
 
+# create and write to analysis file
 with open(analysisFilePath, 'w') as analysisFile:
     analysisFile.write("Financial Analysis")
     analysisFile.write("\n----------------------------")
     analysisFile.write(f"\nTotal Months: {totalMonth}")    
-    analysisFile.write(f"\nTotal: {totalNetProfitLoss}")
-    analysisFile.write(f"\nAverage Change: {netMonthlyAvg:.2f}")
+    analysisFile.write(f"\nTotal: ${totalNetProfitLoss}")
+    analysisFile.write(f"\nAverage Change: ${netMonthlyAvg:.2f}")
     analysisFile.write(f"\nGreatest Increase in Profits: {greatestIncrease[0]} (${greatestIncrease[1]})")
     analysisFile.write(f"\nGreatest Decrease in Profits: {greatestDecrease[0]} (${greatestDecrease[1]})")
+
+    # close analysis file
     analysisFile.close
 
+# read and print analysis report
 with open(analysisFilePath, 'r') as analysisFileReader:
     print(analysisFileReader.read())
 
